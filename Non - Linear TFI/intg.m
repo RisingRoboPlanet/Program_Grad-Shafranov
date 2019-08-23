@@ -1,0 +1,9 @@
+function G = intg(t,a,b,nkx,nky,lk,xk,yk,xk2,yk2)
+x=((xk2+xk)/2)-(lk*t*nky/2);
+y=((yk2+yk)/2)+(lk*t*nkx/2);
+k=sqrt(4*a*x./((x+a).^2+(y-b).^2));
+[K,E]=ellipke(k);
+% K=ellipticK(k.^2);
+% E=ellipticE(k.^2);
+psis = (sqrt(a*x)./(pi*k)).*((1-(k.^2)/2).*K-E);
+G=psis./x;
